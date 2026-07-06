@@ -7,10 +7,17 @@
 #define RES 10
 #define COLS WIDTH / RES
 #define ROWS HEIGHT / RES
+#define GRAVITY 0.9
 
 std::vector<std::vector<int>> make2DArray()
 {
         std::vector<std::vector<int>> vec(COLS, std::vector<int>(ROWS, 0));
+        return vec;
+}
+
+std::vector<std::vector<float>> make2DFloatArray()
+{
+        std::vector<std::vector<float>> vec(COLS, std::vector<float>(ROWS, 0));
         return vec;
 }
 
@@ -21,8 +28,13 @@ bool withinBounds(int val, int counter)
 
 int main()
 {
-        std::vector<std::vector<int>> canvas = make2DArray();
+        std::vector<std::vector<int>> canvas;
         std::vector<std::vector<int>> newCanvas;
+
+        canvas = make2DArray();
+
+        std::vector<std::vector<float>> gravityGrid;
+        std::vector<std::vector<float>> newGraviyGrid;
 
         std::cout << ROWS << std::endl;
 
@@ -98,6 +110,7 @@ int main()
                 EndDrawing();
 
                 newCanvas = make2DArray();
+                newGraviyGrid = make2DFloatArray();
                 for (int x = 0; x < COLS; x++)
                 {
                         for (int y = 0; y < ROWS; y++)
